@@ -17,6 +17,26 @@
 
  ### Embasamento Teórico
 
+ O projeto de um crossover passivo de duas vias envolve a implementação de filtros analógicos de 2ª ordem do tipo **Butterworth**, escolhidos por apresentarem a resposta plana quando está na banda passante e transição suave entre woofer e tweeter. A seguir são apresentadas as funções de transferência e as fórmulas utilizadas para o cálculo dos componentes ideiais. 
+
+ ### 🔹 1. Filtros Butterworth de 2ª Ordem
+
+Um filtro Butterworth de 2ª ordem possui resposta maximamente plana na banda passante e frequência de corte definida por:
+
+
+\[
+\omega_c = 2\pi f_c
+\]
+
+
+A forma geral da função de transferência de um filtro Butterworth de 2ª ordem é:
+
+
+\[
+H(s) = \frac{1}{s^2 + \sqrt{2}\,\omega_c s + \omega_c^2}
+\]
+
+
  ### Lógica do Programa
 
  #### Guia de Execução
