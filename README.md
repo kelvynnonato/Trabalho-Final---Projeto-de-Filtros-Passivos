@@ -149,6 +149,12 @@ $\ L = \frac{R_L}{2\pi f_c} \$
 
  #### Guia de Execução
 
+ - Instale o arquivo [ProjetorDeFiltrosPassivos.m](Filtros%20Passivos/ProjetorDeFiltrosPassivos.m) e o abra com o MATLAB.
+ - Execute o programa.
+ - O programa irá pedir para inserir os parâmetros do projeto: Frequência de Corte (em kHz) e Impedância de Carga (em Ω).
+ - Ao rodar, você verá no console: Os valores ideais de L e C e os valores comerciais selecionados para ambos os filtros.
+ - Ele irá abrir duas janelas gráficas: Gráfico de Bode do LPF (ideal x real) e Gráfico de Bode do HPF (ideal x real).
+
  ### Resultados
 
  ### Análise Crítica
