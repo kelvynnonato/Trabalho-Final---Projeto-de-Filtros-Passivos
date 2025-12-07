@@ -19,25 +19,133 @@
 
  O projeto de um crossover passivo de duas vias envolve a implementação de filtros analógicos de 2ª ordem do tipo **Butterworth**, escolhidos por apresentarem a resposta plana quando está na banda passante e transição suave entre woofer e tweeter. A seguir são apresentadas as funções de transferência e as fórmulas utilizadas para o cálculo dos componentes ideiais. 
 
- ### 🔹 1. Filtros Butterworth de 2ª Ordem
+ ####  1. Filtros Butterworth de 2ª Ordem
 
 Um filtro Butterworth de 2ª ordem possui resposta maximamente plana na banda passante e frequência de corte definida por:
 
 
-\[
-\omega_c = 2\pi f_c
-\]
+$\omega_c = 2\pi f_c\$
 
 
 A forma geral da função de transferência de um filtro Butterworth de 2ª ordem é:
 
 
-\[
-H(s) = \frac{1}{s^2 + \sqrt{2}\,\omega_c s + \omega_c^2}
-\]
+$\ H(s) = \frac{1}{s^2 + \sqrt{2}\\omega_c s + \omega_c^2}\$
+
+ #### 2. Filtro Passa-Baixas (LPF) - Woofer
+
+ A Topologia utilizada foi um indutor em série e capacitor em derivação (shunt) com a carga.
+
+ #### Função de transferência do circuito real:
+
+
+ $\ H_{LP}(s) = \frac{1}{LC\ s^2 + R_L C\ s + 1}\$
+
+
+ #### Fórmulas do projeto (Butterworth 2ª ordem)
+
+ $\ L = \frac{R_L}{\pi f_c}\$
+
+ $\ C = \frac{1}{2\pi f_c R_L}$
+
+
+ #### 3. Filtro Passa-Altas (HPF) - Tweeter
+
+ A Topologia utilizada foi um capacitor em série e indutor em derivação (shunt) com a carga.
+
+
+ ### Impedâncias
+
+$\ Z_C = \frac{1}{sC}  \quad Z_L = sL \$
+
+
+$\ Z_{\parallel} = \frac{Z_L R_L}{Z_L + R_L} \$
+
+
+####  Função de transferência
+
+
+$\ H_{HP}(s) = \frac{Z_{\parallel}}{Z_{\parallel} + Z_C} \$
+
+
+####  Fórmulas de projeto (Butterworth 2ª ordem)
+
+
+$\ C = \frac{1}{\pi f_c R_L} \$
+
+
+$\ L = \frac{R_L}{2\pi f_c} \$
 
 
  ### Lógica do Programa
+
+ Desenvolvida para automatizar o projeto de um crossover passivo de duas vias utilizando de filtros Butterworth de 2ª ordem. A lógica do programa segue nas seguites etapas:
+
+ #### 1. Entrada de parâmetros do usuário
+  O programa inicia recebendo pelo usuário os valores fundamentais para o projeto:
+  - Frequência de corte $\ f_c\$.
+  - Impedância de carga $\ R_L\$.
+
+ #### 2. Cálculo dos componentes ideais
+
+  Utilizando os parâmetros do usuário de frequência e impedância. O programa calcula os componentes ideais com base nas fórmulas do filtro ButterWorth de 2ª ordem:
+
+  ##### Para o LPF (woofer)
+
+  $\ L = \frac{R_L}{\pi f_c}\$
+
+  $\ C = \frac{1}{2 \pi f_c R_L}\$
+
+  #### Para o HPF (tweeter)
+
+  $\ L = \frac{R_L}{2 \pi f_c}\$
+
+  $\ C = \frac{1}{\pi f_c R_L}\$
+
+  Esses serãos os valores que representaram o filtro ideal, sem as limitações dos componentes de mercado.
+
+ #### 3. Selecionando os componentes comerciais mais próximos
+
+  O programa utiliza uma função implementada **proximo** que compara cada valor ideial com os vetores de componentes comerciais usando:
+
+  $\ erro = |x_{ideal} - x_{comercial}|\$
+
+  O componente com menor erro é selecionado como o **valor real**. Garantido que o filtro projetado possa ser implementado fisicamente.
+
+  #### 4. Contrução das funções de transferência
+
+  O programa monta duas funções de transferência para cada filtro: O filtro ideal e o filtro real.
+
+  **Filtro ideal**: Usa os valores ideias de L e C.
+
+  **Filtro real**: Usa os valores comerciais selecionados.
+
+  As funções são construídas com base nos modelos de impedância.
+
+  - $\ Z_L = s_L \$
+  - $\ Z_C = \frac{1}{s_C} \$
+  - $\ Z_{||} = \frac{Z_L R_L}{Z_L + R_L}\$
+
+  O MATLAB monta as expessões simbólicas atumaticamente e gera os sistemas dinâmicos correspondentes.
+
+  #### 5. Gerando os gráficos de Bode
+
+  Com as funções de transferência ideal e real, o programa vai:
+
+  - Calcular magnitude e fase em função da frequência.
+  - Plotar ambas as curvas no mesmo gráfico.
+  - Permitir a comparação:
+    - do deslocamento da frequência de corte;
+    - da diferença de inclunação;
+    - do impacto dos componentes comerciais;
+   
+  #### 6. Exibição dos resultados
+
+  O programa apresenta:
+   - Os valores ideais calculados.
+   - Os valores comerciais selecionados.
+   - Os gráficos de Bode comparativos.
+   - As diferenças observadas entre ideal e real.
 
  #### Guia de Execução
 
