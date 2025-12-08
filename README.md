@@ -169,15 +169,53 @@ $\ L = \frac{R_L}{2\pi f_c} \$
 
  Com os componentes reais e ideais, também recebemos o gráfico de Bode comparativo dos dois filtros:
 
+ #### Filtro Woofer:
  ![Filtro Woofer](Imagens/Comparativo%20Bode%20-%20Passa-Baixa%202ª%20Ordem%20para%20Woofer.png)
 
- ![Filtro Tweeter](Imagens/Comparativo%20Bode%20-%20Passa-Alta%202%C2%AA%20Ordem%20para%20Tweeter.png)
+ #### Filtro Tweeter:
+ ![Filtro Tweeter](Imagens/Comparativo%20Bode%20-%20Passa-Alta%202ª%20Ordem%20para%20Tweeter.png)
 
  Os filtros Butterworth projetados com os componentes ideais apresentam uma resposta muito próxima do modelo teórico, mantendo a característica da banda passante plana e uma transição suave, o que é típico do alinhamento Butterworth. 
  Quando substituímos os valores ideais pelos componentes comerciais, podemos analisar pequenas alterações na resposta em frequência. O início da atenuação apresenta um leve "degrau" ou irregularidade, o que pode resultar em uma atenuação inicial um pouco abrupta e uma possível passagem de pequenos componentes indesejadas (ruídos ou harmônicos). Evidenciando como a escolha dos componentes comerciais influencia o comportamento real do crossover.
 
  ### Análise Crítica
 
+A comparação entre os filtros ideais e os filtros implementados com componentes comerciais revela diferenças importantes.
+
+#### 1. Diferenças nos valores dos componentes
+
+Os valores ideais calculados para L e C não coincidem exatamente com os valores disponíveis comercialmente. Na média, os desvios observados ficaram entre **5% e 20%**. Esses desvios alteram diretamente o fator de amortecimento e a frequência natural do filtro.
+
+#### 2. Deslocamento da frequência de corte
+
+Ao substituir os valores ideais pelos comerciais, a frequência de corte apresentou um deslocamento. Esse deslocamento é visível nos gráficos de Bode, onde o início da atenuação ocorre um pouco antes ou depois do previsto pelo modelo ideal.
+
+#### 3. Impacto prático no sistema de áudio
+
+Na prática, essas diferenças podem ocasionar:
+- Transição menos suave entre woofer e tweeter.  
+- Pequena sobreposição ou “buraco” na região do crossover.  
+- Leve alteração no equilíbrio de tom.  
+- Possibilidade de passagem de componentes indesejadas próximas ao corte.  
+
+Apesar disso, o impacto tende a ser **sutil** em aplicações de áudio doméstico. Entretanto, em sistemas de alta fidelidade, essas diferenças podem ser perceptíveis e justificar ajustes finos ou uso de componentes de precisão.
+
+#### 4. A diferença seria audível?
+
+Em condições normais, a diferença é **pouco audível**, especialmente porque:
+- O ouvido humano tem tolerância natural a pequenas variações de amplitude.  
+- O próprio alto‑falante mascara parte das imperfeições.  
+- O ambiente acústico introduz variações muito maiores que as do filtro.  
+
+Ainda assim, em testes críticos ou ambientes controlados, o deslocamento da frequência de corte pode ser percebido como uma leve mudança na transição entre graves e agudos.
+
+
  ### Conclusões
+
+O projeto pode atingir os objetivos propostos: foi desenvolvida uma ferramenta capaz de calcular os componentes ideais de um filtro Butterworth de 2ª ordem, selecionando automaticamente os valores comerciais mais próximos e gerando gráficos comparativos entre o comportamento ideal e o real. A análise dos resultados permitiu compreender o impacto prático dessas diferenças no desempenho do sistema de áudio.
+
+O maior desafio do projeto foi como lidar com a limitação imposta pelos valores comerciais de indutores e capacitores e os selecionado pela proximidade com os valores ideais. A necessidade de adaptar o projeto aos componentes disponíveis reforça a importância de analisar o comportamento real do sistema e não apenas o modelo matemático.
+
+O trabalho demonstrou que, por mais que os componentes comerciais introduzam pequenas variações na resposta do filtro, o desempenho geral permanece adequado para aplicações de áudio do cotidiano. Além disso, o processo reforçou o quão importante é a simulação, a análise crítica e a validação experimental como etapas essenciais em qualquer projeto de engenharia.
 
 
