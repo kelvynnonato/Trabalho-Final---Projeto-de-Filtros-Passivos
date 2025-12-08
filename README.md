@@ -173,7 +173,7 @@ $\ L = \frac{R_L}{2\pi f_c} \$
  ![Filtro Woofer](Imagens/Comparativo%20Bode%20-%20Passa-Baixa%202ª%20Ordem%20para%20Woofer.png)
 
  #### Filtro Tweeter:
- ![Filtro Tweeter](Imagens/Comparativo%20Bode%20-%20Passa-Alta%202ª%20Ordem%20para%20Tweeter.png)
+ ![Filtro Tweeter](Imagens/Passa%20Alta.png)
 
  Os filtros Butterworth projetados com os componentes ideais apresentam uma resposta muito próxima do modelo teórico, mantendo a característica da banda passante plana e uma transição suave, o que é típico do alinhamento Butterworth. 
  Quando substituímos os valores ideais pelos componentes comerciais, podemos analisar pequenas alterações na resposta em frequência. O início da atenuação apresenta um leve "degrau" ou irregularidade, o que pode resultar em uma atenuação inicial um pouco abrupta e uma possível passagem de pequenos componentes indesejadas (ruídos ou harmônicos). Evidenciando como a escolha dos componentes comerciais influencia o comportamento real do crossover.
