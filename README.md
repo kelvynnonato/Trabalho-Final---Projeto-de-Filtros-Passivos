@@ -136,7 +136,7 @@ $\ L = \frac{R_L}{2\pi f_c} \$
   - Plotar ambas as curvas no mesmo gráfico.
   - Permitir a comparação:
     - do deslocamento da frequência de corte;
-    - da diferença de inclunação;
+    - da diferença de inclinação;
     - do impacto dos componentes comerciais;
    
   #### 6. Exibição dos resultados
@@ -151,14 +151,33 @@ $\ L = \frac{R_L}{2\pi f_c} \$
 
  - Instale o arquivo [ProjetorDeFiltrosPassivos.m](Filtros%20Passivos/ProjetorDeFiltrosPassivos.m) e o abra com o MATLAB.
  - Execute o programa.
- - O programa irá pedir para inserir os parâmetros do projeto: Frequência de Corte (em kHz) e Impedância de Carga (em Ω).
+ - O programa irá pedir para inserir os parâmetros do projeto: Frequência de Corte (em kHz) e Impedância de Carga (em Ω). Dessa forma:
+   
+   ![Entrada de Dados](Imagens/Entrada%20de%20Dados.png)
+   
  - Ao rodar, você verá no console: Os valores ideais de L e C e os valores comerciais selecionados para ambos os filtros.
  - Ele irá abrir duas janelas gráficas: Gráfico de Bode do LPF (ideal x real) e Gráfico de Bode do HPF (ideal x real).
 
  ### Resultados
 
+ Para a minha análise de resultados, foi utilizado uma Impedância de Carga de **8 Ω** e uma Frequência de Corte de **2.2 kHz**.
+ O programa nos retornou:
+
+ ![Componentes Recomendados](Imagens/Componentes%20Recomendados.png)
+
+ Podemos reparar que a proximidade dos indutores é bem grande, com pouca diferença. Diferente dos Capacitores, onde os ideais são muito menores que os encontrados comercialmente, o que vai refletir diretamente na implementação do filtro.
+
+ Com os componentes reais e ideais, também recebemos o gráfico de Bode comparativo dos dois filtros:
+
+ ![Filtro Woofer](Imagens/Comparativo%20Bode%20-%20Passa-Baixa%202ª%20Ordem%20para%20Woofer.png)
+
+ ![Filtro Tweeter](Imagens/Comparativo%20Bode%20-%20Passa-Alta%202%C2%AA%20Ordem%20para%20Tweeter.png)
+
+ Os filtros Butterworth projetados com os componentes ideais apresentam uma resposta muito próxima do modelo teórico, mantendo a característica da banda passante plana e uma transição suave, o que é típico do alinhamento Butterworth. 
+ Quando substituímos os valores ideais pelos componentes comerciais, podemos analisar pequenas alterações na resposta em frequência. O início da atenuação apresenta um leve "degrau" ou irregularidade, o que pode resultar em uma atenuação inicial um pouco abrupta e uma possível passagem de pequenos componentes indesejadas (ruídos ou harmônicos). Evidenciando como a escolha dos componentes comerciais influencia o comportamento real do crossover.
+
  ### Análise Crítica
 
  ### Conclusões
 
-![Filtro Teste](Imagens/Comparativo%20Bode%20-%20Passa-Alta%202%C2%AA%20Ordem%20para%20Tweeter.png)
+
